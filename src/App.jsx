@@ -7,6 +7,7 @@ import TaskList from './components/TaskList';
 
 function App() {
     const [tasks, setTasks] = useState([]);
+    const [PreviousFocusEl, setPreviousFocusEl] = useState(null);
     const [editedTask, setEditedTask] = useState(null);
     const [isEditing, setIsEditing] = useState(false);
 
@@ -34,11 +35,13 @@ function App() {
 
     const closeEditMode = () => {
         setIsEditing(false);
+        PreviousFocusEl.focus();
     };
 
     const enterEditMode = (task) => {
         setEditedTask(task);
         setIsEditing(true);
+        setPreviousFocusEl(document.activeElement);
     };
 
     return (
