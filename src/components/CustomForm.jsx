@@ -28,6 +28,7 @@ export const CustomForm = ({ addTask }) => {
                     type="text"
                     id="task"
                     className="input"
+                    value={task}
                     onInput={(e) => setTask(e.target.value)}
                     required
                     autoFocus
