@@ -1,9 +1,20 @@
-import React from 'react'
+// component import
+import TaskItem from './TaskItem';
 
-export const TaskList = () => {
+// styles
+import styles from './TaskList.module.css';
+
+const TaskList = ({tasks}) => {
   return (
-    <div>
-        TaskList
-    </div>
+    <ul className={styles.tasks}>
+      {tasks.sort((a, b) => b.id - a.id).map(task => (
+        <TaskItem
+          key={task.id}
+          task={task}
+        />
+      ))
+      }
+    </ul>
   )
 }
+export default TaskList;
