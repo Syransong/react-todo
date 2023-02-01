@@ -5,6 +5,8 @@ import styles from './TaskItem.module.css';
 
 // Library imports
 import { CheckIcon } from '@heroicons/react/24/outline';
+import { PencilSquareIcon } from '@heroicons/react/24/outline';
+import { TrashIcon } from '@heroicons/react/24/outline';
 
 const TaskItem = ({task}) => {
     const [isChecked, setIsChecked] = useState(task.checked);
@@ -33,6 +35,20 @@ const TaskItem = ({task}) => {
                         <CheckIcon strokeWidth={2} width={24} height={24} />
                     </p>
                 </label>
+            </div>
+            <div className={styles["task-group"]}>
+                <button
+                    className={`btn`}
+                    aria-label={`Update ${task.name} Task`}
+                >
+                    <PencilSquareIcon width={24} height={24} />
+                </button>
+                <button
+                    className={`btn ${styles.delete}`}
+                    aria-label={`Delete ${task.name} Task`}
+                >
+                    <TrashIcon width={24} height={24} />
+                </button>
             </div>
         </li>
     )
