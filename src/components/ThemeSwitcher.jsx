@@ -1,7 +1,9 @@
 import React from 'react'
 
-export const ThemeSwitcher = () => {
+const ThemeSwitcher = () => {
   return (
     <div>ThemeSwitcher</div>
   )
 }
+
+export default ThemeSwitcher;
