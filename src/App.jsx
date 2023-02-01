@@ -8,6 +8,7 @@ import { CustomForm } from './components/CustomForm';
 import { EditForm } from './components/EditForm';
 import TaskList from './components/TaskList';
 import ThemeSwitcher from './components/ThemeSwitcher';
+import PomoTimer from './components/PomoTimer';
 
 function App() {
     const [tasks, setTasks] = useLocalStorage('react-todo.tasks', []);
@@ -53,6 +54,7 @@ function App() {
             <header>
                 <h1>My Task List</h1>
             </header>
+            <PomoTimer />
             {
                 isEditing && (
                     <EditForm 
