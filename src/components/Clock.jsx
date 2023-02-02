@@ -8,7 +8,7 @@ function Clock() {
     }
 
     useEffect(() => {
-        const timerId = setInterval(refreshClock, 1000);
+        const timerId = setInterval(refreshClock, 60000);
         return function cleanup() {
             clearInterval(timerId);
         }
@@ -16,7 +16,7 @@ function Clock() {
 
     return (
         <h2>
-            {date.toLocaleTimeString()}
+            {date.toLocaleTimeString([], {timeStyle: 'short'})}
         </h2>
     );
 }
