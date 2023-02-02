@@ -36,8 +36,7 @@
       0 0 .5em hsl(var(--accent) / .1),
       0 0 0 0.05em hsl(var(--accent) / .5),
       0 0 0 -0.2em hsl(var(--accent));
-    transition: box-shadow var(--_tspeed_fast) ease-in-out,
-      background-color 80ms ease-in-out;
+    transition: box-shadow var(--_tspeed_fast) ease-in-out;
   }
   
   .checkbox:focus {
