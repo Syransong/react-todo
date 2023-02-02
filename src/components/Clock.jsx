@@ -15,9 +15,9 @@ function Clock() {
     }, []);
 
     return (
-        <h2>
+        <div className='clock'>
             {date.toLocaleTimeString([], {timeStyle: 'short'})}
-        </h2>
+        </div>
     );
 }
 
