@@ -1,10 +1,15 @@
 import { useState, useEffect } from 'react';
 import { MoonIcon, SunIcon, SwatchIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import useLocalStorage from '../hooks/useLocalStorage';
 import styles from './ThemeSwitcher.module.css';
 
 const ThemeSwitcher = () => {
-    const [hue, setHue] = useState('240');
-    const [theme, setTheme] = useState('light');
+    const [hue, setHue] = useLocalStorage('240');
+
+    // For first time users, the theme will match the user's preferences 
+    const defaultDark = window.matchMedia('prefers-color-scheme: dark').matches;
+    const [theme, setTheme] = useLocalStorage('react-todo.theme', defaultDark ? "dark" : "light");
+
     const [isColourPicking, setIsColourPicking] = useState(false);
 
     const handleThemeBtn = () => setTheme(theme === "light" ? "dark" : "light");
@@ -20,6 +25,11 @@ const ThemeSwitcher = () => {
     return (
         <aside
             className={styles.wrapper}
+            style={{
+                backgroundColor: isColourPicking 
+                ? 'hsl(var(--muted) / .6'
+                : 'transparent'
+            }}
         >
             {
                 isColourPicking ? (
