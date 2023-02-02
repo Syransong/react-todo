@@ -1,12 +1,21 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { MoonIcon, SunIcon, SwatchIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import styles from './ThemeSwitcher.module.css';
 
 const ThemeSwitcher = () => {
+    const [hue, setHue] = useState('240');
     const [theme, setTheme] = useState('light');
     const [isColourPicking, setIsColourPicking] = useState(false);
 
     const handleThemeBtn = () => setTheme(theme === "light" ? "dark" : "light");
+
+    useEffect(() => {
+        document.documentElement.setAttribute('color-scheme', theme);
+    }, [theme]);
+
+    useEffect(() => {
+        document.documentElement.style.setProperty('--_hue', hue);
+    }, [hue]);
     
     return (
         <aside
@@ -22,7 +31,16 @@ const ThemeSwitcher = () => {
                         >
                             <XMarkIcon />
                         </button>
-                        <input type="range"/>
+                        <input 
+                            className={styles.picker}
+                            type="range"
+                            min="0"
+                            max="360"
+                            aria-label="Change colour theme slider"
+                            value={hue}
+                            onInput={(e) => setHue(e.target.value)}
+
+                        />
                     </>
                 )
                 : (
