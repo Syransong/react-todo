@@ -1,12 +1,18 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function Clock() {
     const [date, setDate] = useState(new Date());
-    const timerId = setInterval(refreshClock, 1000);
 
     function refreshClock() {
-        setDate(newDate());
+        setDate(new Date());
     }
+
+    useEffect(() => {
+        const timerId = setInterval(refreshClock, 1000);
+        return function cleanup() {
+            clearInterval(timerId);
+        }
+    }, []);
 
     return (
         <h2>
